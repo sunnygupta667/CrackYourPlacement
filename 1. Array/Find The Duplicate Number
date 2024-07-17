@@ -1,0 +1,27 @@
+Code: 
+class Solution {
+    public int findDuplicate(int[] nums) {
+        // Using Hashset
+        HashSet<Integer> set = new HashSet<>();
+        for(int x : nums){
+            if(set.contains(x)){
+                return x;
+            }
+            set.add(x);
+        }
+        return 0;
+    }
+}
+
+Complexity:
+Time Complexity: O(n)
+Space Complexity:  O(n)
+
+Algorithm: 
+1. Initialize a HashSet: A HashSet named set is created to keep track of the elements that have been encountered.
+2. Iterate through the array: The method uses an enhanced for loop to go through each element x in the array nums.
+3. Check for duplicates:
+     For each element x, the method checks if set already contains x.
+     If set contains x, it means x is a duplicate, and the method returns x immediately.
+4. Add element to HashSet: If x is not already in set, it is added to set.
+5. Return 0 if no duplicates found: If no duplicates are found after iterating through the entire array, the method returns 0 (though this case should not occur if the input guarantees at least one duplicate).
