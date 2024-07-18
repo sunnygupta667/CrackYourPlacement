@@ -1,0 +1,31 @@
+Code:
+class Solution {
+    public int maxProfit(int[] prices) {
+        int buyPrices= Integer.MAX_VALUE, maxProfit=0;
+    for(int i=0;i<prices.length;i++){
+      if (buyPrices< prices[i]){
+        int profit = prices[i]-buyPrices;
+        maxProfit= Math.max(maxProfit, profit);
+      }
+      else{
+         buyPrices= prices[i];
+      }
+    }
+    return maxProfit;
+    }
+}
+
+Algorithm:
+1. Initialize Variables:
+    buyPrices is set to Integer.MAX_VALUE (a very large number). This variable will keep track of the lowest price we can buy the stock.
+    maxProfit is set to 0. This variable will keep track of the maximum profit we can achieve.
+2. Iterate through Prices:
+    The loop goes through each price in the prices array.
+3. Check if Current Price is Higher than buyPrices:
+    If buyPrices (the lowest price we've seen so far) is less than the current price (prices[i]), it means we can sell the stock at the current price for a profit.
+    Calculate the profit: profit = prices[i] - buyPrices.
+    Update maxProfit with the maximum value between the current maxProfit and the new profit.
+4. Update buyPrices if Current Price is Lower:
+    If the current price (prices[i]) is less than buyPrices, update buyPrices to be the current price. This means we've found a new lower price to buy the stock.
+5. Return the Result:
+    After the loop ends, return the maxProfit which holds the maximum profit that can be achieved.
