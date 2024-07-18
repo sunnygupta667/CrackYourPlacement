@@ -1,0 +1,25 @@
+Code: 
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int snowBallSize = 0; 
+        for (int i=0;i<nums.length;i++){
+	        if (nums[i]==0){
+                snowBallSize++; 
+            }
+            else if (snowBallSize > 0) {
+	            int t = nums[i];
+	            nums[i]=0;
+	            nums[i-snowBallSize]=t;
+            }
+        }                                                                                 
+    }
+}
+
+Algorithm:
+Initialize snowBallSize to 0.
+For each number nums[i] in the list:
+If nums[i] is 0:
+Increase snowBallSize by 1.
+Else if snowBallSize is greater than 0:
+Move nums[i] to nums[i - snowBallSize].
+Set nums[i] to 0.
