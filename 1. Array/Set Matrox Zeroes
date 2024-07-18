@@ -1,0 +1,50 @@
+Code:
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+        boolean[][] isOriginalZero = new boolean[rows][cols];
+
+        // First pass: record the position of original zeros in the matrix
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (matrix[i][j] == 0) {
+                    isOriginalZero[i][j] = true;
+                }
+            }
+        }
+
+        // Second pass: set the corresponding rows and columns to zero
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (isOriginalZero[i][j]) {
+                    // Set the entire row to zero
+                    for (int c = 0; c < cols; c++) {
+                        matrix[i][c] = 0;
+                    }
+                    // Set the entire column to zero
+                    for (int r = 0; r < rows; r++) {
+                        matrix[r][j] = 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+Complexity: 
+Time Complexity:
+The time complexity is O(m * n) where m is the number of rows and n is the number of columns. This is because we iterate through the matrix twice.
+Space Complexity:
+The space complexity is O(m * n) due to the isOriginalZero matrix, which has the same dimensions as the input matrix.
+
+Algorithm:
+1. Initialize Variables:
+    Get the number of rows (rows) and columns (cols) in the matrix.
+    Create a boolean 2D array (isOriginalZero) of the same size as the matrix to keep track of where the original zeros are.
+2. First Pass: Identify Original Zeros:
+    Loop through each element in the matrix.
+    If an element is zero, mark its position as true in the isOriginalZero array.
+3. Second Pass: Set Rows and Columns to Zero:
+    Loop through each element in the isOriginalZero array.
+    For each position marked as true, set the entire row and column of the corresponding position in the original matrix to zero.
