@@ -1,0 +1,35 @@
+Code:
+class Solution {
+    public List<Integer> findDuplicates(int[] nums) {
+      List<Integer> ans=new ArrayList<>();
+      HashSet<Integer> st=new HashSet<>();
+      for(int i=0;i<nums.length;i++){
+        if(st.contains(nums[i])) ans.add(nums[i]);
+         st.add(nums[i]);
+      } 
+      return ans; 
+    }
+}
+
+Algorithm:
+1. Create an empty list to store duplicates:
+    List<Integer> ans = new ArrayList<>();
+    This list, ans, will store all the numbers that appear more than once in the array.
+2. Create an empty set to track seen numbers:
+    HashSet<Integer> st = new HashSet<>();
+    This set, st, will help us keep track of which numbers we've already seen as we go through the array.
+3. Loop through each number in the array:
+    for (int i = 0; i < nums.length; i++) {
+    This loop goes through each element in the array nums.
+4. Check if the current number is already in the set:
+    if (st.contains(nums[i]))
+    If the number nums[i] is already in the set st, it means we've seen this number before, so it is a duplicate.
+5.  If it's a duplicate, add it to the list:
+    ans.add(nums[i]);
+    Add the duplicate number to the list ans.
+6. Add the current number to the set:
+    st.add(nums[i]);
+    Add the current number to the set st so that we know we've seen it.
+7. Return the list of duplicates:
+    return ans;
+    After checking all the numbers in the array, return the list ans, which now contains all the duplicates.
