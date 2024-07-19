@@ -1,0 +1,26 @@
+Code:
+class Solution {
+    public int maxProfit(int[] prices) {
+             int profit = 0;
+        for (int i = 1 ; i < prices.length ; i++) {
+            if (prices[i] > prices[i - 1 ]) profit += (prices[i] - prices[i - 1]);
+        }
+        
+        return profit;
+
+    }
+}
+
+Algorithm:
+1. Initialize the profit variable:
+    Start with a profit of 0 because we haven't made any transactions yet.
+2. Loop through the prices from the second day onwards:
+    Start from the second element (index 1) and go through each day's price until the end.
+3. Check if the current day's price is higher than the previous day's price:
+    Compare today's price with yesterday's price.
+4. Calculate the profit if the price has increased:
+    If today's price is higher than yesterday's, calculate the profit by subtracting yesterday's price from today's price and add this to the total profit.
+5. End the loop:
+    Continue this process for each day until all prices have been checked.
+6. Return the total profit:
+    After checking all the prices, return the total accumulated profit.
