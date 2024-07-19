@@ -1,0 +1,35 @@
+Code:
+class Solution {
+    public int maxArea(int[] height) {
+             int i = 0;
+        int j = height.length - 1;
+        int maxarea = 0;
+        
+        while(i < j){
+            int left = height[i];
+            int right = height[j];
+            
+            int max = Math.min(left , right) * (j - i);
+            maxarea = Math.max(max , maxarea);
+            
+            if(left < right){
+                i++;
+            }else{
+                j--;
+            }
+        }
+        return maxarea;
+    
+    }
+}
+
+Explanation:
+1. Let's go through an example with the array [1,8,6,2,5,4,8,3,7]:
+2.Start with i = 0 (height = 1) and j = 8 (height = 7).
+3. Calculate the area: min(1, 7) * (8 - 0) = 1 * 8 = 8. Update maxarea to 8.
+4. Since height at i (1) is less than height at j (7), move i to 1.
+5. Now, i = 1 (height = 8) and j = 8 (height = 7).
+6. Calculate the area: min(8, 7) * (8 - 1) = 7 * 7 = 49. Update maxarea to 49.
+7. Since height at i (8) is greater than height at j (7), move j to 7.
+8. Continue this process, comparing heights at i and j, calculating the area, updating maxarea, and moving the pointers inward.
+9. The maximum area found in this example is 49.
