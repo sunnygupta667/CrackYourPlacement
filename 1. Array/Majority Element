@@ -1,0 +1,11 @@
+Code: 
+class Solution {
+    public int majorityElement(int[] nums) {
+        Arrays.sort(nums);
+        int n = nums.length;
+        return nums[n/2];
+    }
+}
+Explanation:
+The function first sorts the array.
+Then, it returns the middle element of the sorted array, which is guaranteed to be the majority element if it exists.
