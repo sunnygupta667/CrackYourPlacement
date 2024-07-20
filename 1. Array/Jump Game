@@ -1,0 +1,17 @@
+Code: 
+class Solution {
+    public boolean canJump(int[] nums) {
+        int targetNumIndex = nums.length - 1;
+        for (int i = nums.length - 2; i >= 0; i--) {
+            if (targetNumIndex <= i + nums[i]) {
+                targetNumIndex = i;
+            }
+        }
+        return targetNumIndex == 0;
+    }
+}
+
+Explanation:
+The function checks if you can reach the last index of the array by iteratively updating the target position you need to reach.
+It starts from the end of the array and moves to the beginning, updating the target position whenever it finds that the current position can reach or surpass the target.
+If, by the end of the loop, the target position is 0, it means you can jump from the start to the end. Otherwise, you cannot.
