@@ -1,0 +1,59 @@
+Code:
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+      List<Integer> result = new ArrayList<>();
+        if (matrix == null || matrix.length == 0) {
+            return result;
+        }
+        
+        int rows = matrix.length, cols = matrix[0].length;
+        int left = 0, right = cols-1, top = 0, bottom = rows-1;
+        
+        while (left <= right && top <= bottom) {
+            for (int i = left; i <= right; i++) {
+                result.add(matrix[top][i]);
+            }
+            top++;
+            
+            for (int i = top; i <= bottom; i++) {
+                result.add(matrix[i][right]);
+            }
+            right--;
+            
+            if (top <= bottom) {
+                for (int i = right; i >= left; i--) {
+                    result.add(matrix[bottom][i]);
+                }
+                bottom--;
+            }
+            
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--) {
+                    result.add(matrix[i][left]);
+                }
+                left++;
+            }
+        }
+        
+        return result;   
+    }
+}
+
+Explanation:
+1. Start with an empty list:
+Create an empty list result to hold the numbers in spiral order.
+2. Check if the matrix is empty:
+If the input matrix is empty, return the empty result list.
+3. Define boundaries:
+Set up four boundaries: top, bottom, left, and right to represent the edges of the matrix.
+4. Traverse the matrix in a spiral:
+Use a loop to keep going as long as the left boundary is less than or equal to the right boundary and the top boundary is less than or equal to the bottom boundary.
+5. In each loop:
+Go right: Move from the left boundary to the right boundary along the top row, adding each number to result. Then, move the top boundary down by one row.
+Go down: Move from the top boundary to the bottom boundary along the right column, adding each number to result. Then, move the right boundary left by one column.
+Go left (if there are rows left): Move from the right boundary to the left boundary along the bottom row, adding each number to result. Then, move the bottom boundary up by one row.
+Go up (if there are columns left): Move from the bottom boundary to the top boundary along the left column, adding each number to result. Then, move the left boundary right by one column.
+6. Repeat:
+Continue looping until all boundaries are crossed and all numbers are added to result.
+7. Return the result:
+Return the list result which now contains all the numbers in spiral order.
