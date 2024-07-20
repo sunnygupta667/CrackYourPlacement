@@ -1,0 +1,15 @@
+Code: 
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        for (int j = 0, i = m; j < n; j++) {
+            nums1[i] = nums2[j];
+            i++;
+        }
+        Arrays.sort(nums1);
+    }
+}
+
+Explanation:
+The function starts by appending all elements of nums2 to the end of the initial elements in nums1.
+Then, it sorts the combined array nums1 to ensure all elements are in the correct order.
+This way, the merged array nums1 will contain all elements from both nums1 and nums2 in sorted order.
