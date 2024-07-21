@@ -1,0 +1,41 @@
+Code:
+class Solution {
+    public boolean validPalindrome(String s) {
+        int i = 0;
+        int j = s.length() - 1;
+        
+        while(i <= j){
+            if(s.charAt(i) == s.charAt(j)){
+                i++;
+                j--;
+            }
+            else return isPalindrome(s, i + 1, j) || isPalindrome(s, i, j - 1);
+        }
+        return true;
+    }
+    public boolean isPalindrome(String s, int i, int j){
+        while(i <= j){
+            if(s.charAt(i) == s.charAt(j)){
+                i++;
+                j--;
+            }
+            else return false;
+        }
+        return true;
+    }
+}
+Explanation:
+Initialize Pointers:
+Start with two pointers, i at the beginning and j at the end of the string.
+Check Characters:
+Move pointers inward, comparing characters at i and j.
+Handle Mismatch:
+If characters at i and j don't match, check if either:
+The substring from i + 1 to j is a palindrome.
+The substring from i to j - 1 is a palindrome.
+Return Result:
+If either substring is a palindrome, return true.
+If no mismatches are found, return true.
+Helper Function isPalindrome:
+This function checks if a substring from i to j is a palindrome by moving pointers inward and comparing characters.
+The main function ensures the string can be a palindrome by removing at most one character, using the helper function to verify potential palindromes.
