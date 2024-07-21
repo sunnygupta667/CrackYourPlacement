@@ -1,0 +1,24 @@
+Code: 
+class Solution {
+    public String intToRoman(int num) {
+        int[] n = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        String[] s = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+        int i =0;
+        String str = new String(); 
+        while (num>0){
+            if (num>=n[i]){
+                str=str+s[i];
+                num-=n[i];
+            } else{
+                i++;
+            }
+        }
+        return str;
+    }
+}
+Explanation:
+The method initializes i to 0 and str to an empty string.
+It then enters a while loop that continues until num becomes 0.
+Inside the loop, if num is greater than or equal to n[i], it appends s[i] to str and subtracts n[i] from num.
+If num is less than n[i], it increments i to move to the next value and corresponding Roman numeral.
+Finally, it returns the constructed Roman numeral string str.
