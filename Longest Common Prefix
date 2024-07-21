@@ -1,0 +1,27 @@
+Code:
+public class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        if (strs == null || strs.length == 0) return "";
+        String prefix = strs[0];
+        for (String s : strs)
+            while (s.indexOf(prefix) != 0)
+                prefix = prefix.substring(0, prefix.length() - 1);
+        return prefix;
+    }
+}
+Explanation:
+Check for Empty Input:
+If the input array strs is null or empty, return an empty string "" because there is no common prefix.
+Initialize the Prefix:
+Start with the first string in the array as the initial prefix.
+Iterate Through Each String:
+Go through each string in the array strs.
+Shorten the Prefix:
+For each string, check if it starts with the current prefix. If it doesn't, remove the last character from the prefix and check again. Keep shortening the prefix until the string starts with it.
+Return the Common Prefix:
+After processing all strings, return the final prefix which is the longest common prefix for all strings in the array.
+
+
+
+
+
