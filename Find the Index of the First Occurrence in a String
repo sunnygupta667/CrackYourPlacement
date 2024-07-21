@@ -1,0 +1,27 @@
+Code:
+class Solution {
+    public int strStr(String haystack, String needle) {
+        if (haystack.length() < needle.length()) {
+            return -1;
+        }
+        
+        for (int i = 0; i <= haystack.length() - needle.length(); i++) {
+            if (haystack.substring(i, i + needle.length()).equals(needle)) {
+                return i;
+            }
+        }
+        
+        return -1;        
+    }
+}
+Explanation:
+Check if needle is too long:
+If needle is longer than haystack, return -1 because needle can't be found in haystack.
+Look for needle in haystack:
+Go through haystack and check each possible starting position where needle could fit.
+Compare Substrings:
+At each position, take a part of haystack that is the same length as needle and see if it matches needle.
+Return Position if Found:
+If a match is found, return the position where it starts.
+Return -1 if Not Found:
+If no match is found after checking all possible positions, return -1.
