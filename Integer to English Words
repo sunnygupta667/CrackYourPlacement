@@ -1,0 +1,69 @@
+Code:
+class Solution {
+    String[] LESS_THAN_20 = {"", "One", "Two", "Three", "Four", "Five", "Six", "Seven",
+    "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen",
+    "Seventeen", "Eighteen", "Nineteen"};
+    String[] TENS = {"", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", 
+    "Eighty", "Ninety"};
+    String[] THOUSANDS = {"", "Thousand", "Million", "Billion"};
+    
+    public String numberToWords(int num) {
+        if(num == 0)
+            return "Zero";
+        int i = 0;
+        String words = "";
+        while(num > 0) {
+            if(num % 1000 != 0)
+                words = getValue(num % 1000) + THOUSANDS[i] + " " + words;
+            num /= 1000;
+            i++;
+        }
+        return words.trim();
+    }
+    String getValue(int num) {
+        if(num == 0)
+            return "";
+        else if (num < 20)
+            return LESS_THAN_20[num] + " ";
+        else if (num < 100)
+            return TENS[num / 10] + " " + getValue(num % 10);
+        else
+            return LESS_THAN_20[num / 100] + " Hundred " + getValue(num % 100);
+    }
+}
+Explanation:
+
+Sure! Here’s a simplified explanation of the code in easy language:
+
+What the Code Does:
+This code converts a number into its English words representation. For example, it can convert 123 into "One Hundred Twenty Three".
+
+How It Works:
+Define Word Arrays:
+
+LESS_THAN_20: Words for numbers less than 20.
+TENS: Words for tens (20, 30, etc.).
+THOUSANDS: Words for big number places (thousand, million, billion).
+Main Function (numberToWords):
+
+If the number is 0, return "Zero".
+Initialize a variable i to keep track of the thousand, million, etc.
+Initialize an empty string words to build the final output.
+Loop through the number in chunks of 1000:
+If the chunk is not zero, convert it to words using the getValue function and add the corresponding thousand/million/billion word.
+Move to the next chunk of 1000 by dividing the number by 1000.
+Increase i to move to the next thousand/million/billion.
+Helper Function (getValue):
+
+Converts numbers less than 1000 to words.
+If the number is 0, return an empty string.
+If the number is less than 20, return the corresponding word from LESS_THAN_20.
+If the number is less than 100, return the corresponding tens word from TENS and recursively get the word for the remainder.
+If the number is 100 or more, return the corresponding word for the hundreds place from LESS_THAN_20 followed by "Hundred" and recursively get the word for the remainder.
+Example:
+For the number 1234:
+
+Split into chunks of 1000: 1 (thousand) and 234.
+Convert 234 to "Two Hundred Thirty Four".
+Convert 1 to "One Thousand".
+Combine them to get "One Thousand Two Hundred Thirty Four".
