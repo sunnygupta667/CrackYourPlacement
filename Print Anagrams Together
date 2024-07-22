@@ -1,0 +1,45 @@
+Code:
+class Solution {
+    public List<List<String>> Anagrams(String[] string_list) {
+        // Code here
+        HashMap<String,List<String>>anagram = new HashMap<>();
+for(String word:string_list){
+   char chararray[]= word.toCharArray(); // converting string into array
+   Arrays.sort(chararray); // sorting the character and we will new string 
+   String sortedch = new String(chararray);
+   if(!anagram.containsKey(sortedch)){
+   anagram.put(sortedch,new ArrayList<>());
+   }
+    anagram.get(sortedch).add(word); // if already h then woh word bhi list m add kardo  
+
+}
+List<List<String>> result = new ArrayList<>(anagram.values());
+        return result;
+    }
+}
+Explanation: 
+Create a Map:
+
+Use a Map to keep track of words that are anagrams of each other. The key is the sorted version of the word, and the value is a list of words that match this sorted version.
+Loop Through Words:
+
+For each word in the list, convert it into an array of characters.
+Sort Characters:
+
+Sort the characters of the word. This gives a standard form for all anagrams.
+Convert Back to String:
+
+Turn the sorted characters back into a string.
+Check Map:
+
+If the sorted string is not already in the Map, add it with an empty list.
+Add Word to List:
+
+Add the original word to the list associated with the sorted string in the Map.
+Get All Lists:
+
+Collect all the lists of anagrams from the Map.
+Return Result:
+
+Return the collected lists as the result.
+In short, the code groups words that are anagrams of each other into separate lists and returns these lists.
