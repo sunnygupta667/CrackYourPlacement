@@ -1,0 +1,35 @@
+Code:
+class Solution {
+    public String reverseWords(String s) {
+        String ans="";
+        String[] words=s.split("\\s+");
+        for(String w : words){
+            if(ans=="") ans=w;
+            else ans=w+" "+ans;
+        }
+        return ans;
+    }
+}
+Explanation:
+Start with a Class and Method:
+We have a class called Solution.
+Inside this class, there's a method called reverseWords that takes a sentence (s) and gives back a sentence.
+Create an Empty String:
+We start with an empty string called ans.
+Split the Sentence into Words:
+We break the sentence s into individual words and store them in a list called words.
+Loop Through Each Word:
+For each word in the words list:
+If ans is still empty, put the word in ans.
+If ans already has words, add the new word to the front of ans.
+Return the Result:
+After going through all the words, ans will have the words in reverse order. We return this reversed sentence.
+
+
+Example:
+If the input is "Hello World":
+Split into words: ["Hello", "World"].
+Loop through:
+First word: ans becomes "Hello".
+Second word: ans becomes "World Hello".
+The final output is "World Hello".
