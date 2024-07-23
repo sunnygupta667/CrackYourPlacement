@@ -1,0 +1,19 @@
+Code:
+class Solution {
+    public int minMoves2(int[] nums) {
+        Arrays.sort(nums);
+
+        int mid = nums[nums.length / 2];
+        int count = 0;
+
+        for (int num : nums)
+            count += Math.abs(mid - num);
+
+        return count;
+    }
+}
+Explanation:
+Sort the array to find the median.
+Find the median of the sorted array.
+Calculate the total number of moves by summing up the absolute differences between each element and the median.
+Return the total number of moves.
