@@ -1,0 +1,39 @@
+Code:
+class Solution {
+    public String addBinary(String a, String b) {
+               StringBuilder result = new StringBuilder();
+        int i = a.length() - 1, j = b.length() - 1, carry = 0;
+
+        while (i >= 0 || j >= 0) {
+            int sum = carry;
+            if (i >= 0) sum += a.charAt(i--) - '0';
+            if (j >= 0) sum += b.charAt(j--) - '0';
+            result.append(sum % 2);
+            carry = sum / 2;
+        }
+        
+        if (carry != 0) result.append(carry);
+        return result.reverse().toString();
+
+}
+}
+Explanation:
+Initialize Variables:
+StringBuilder result to build the resulting binary string.
+int i and int j to traverse the strings a and b from right to left.
+int carry to store the carry-over during addition.
+
+Traverse Both Strings:
+Loop until both i and j are less than 0.
+For each position, add the corresponding digit from a and b to sum if they are within bounds.
+Update the carry for the next iteration.
+
+Append the Sum:
+Append the current digit (sum % 2) to the result.
+Update the carry to be the integer division of sum by 2.
+
+Handle Remaining Carry:
+If there is a carry left after the loop, append it to the result.
+
+Return the Result:
+Reverse the result and convert it to a string to get the final binary sum.
