@@ -1,0 +1,18 @@
+Code:
+class Solution {
+    public String convertToTitle(int columnNumber) {
+        StringBuilder ans = new StringBuilder();
+        
+        // Loop until the column number is greater than 0
+        while (columnNumber > 0) {
+            columnNumber--; // Decrease the column number by 1 to handle 0-based indexing
+            // Find the character for the current position and add it to the result
+            ans.append((char) ((columnNumber) % 26 + 'A'));
+            // Move to the next position (divide by 26)
+            columnNumber = (columnNumber) / 26;
+        }
+        
+        // Reverse the result string since characters were added in reverse order
+        return ans.reverse().toString();
+    }
+}
