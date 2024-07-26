@@ -1,0 +1,42 @@
+Code:
+class Solution {
+    public boolean isPossible(long a[], long b[], int n, long k) {
+        // Your code goes here
+        Arrays.sort(a);
+        Arrays.sort(b);
+        
+        // Check if there exists a permutation where a[i] + b[i] >= k for all i
+        for(int i = 0; i < n; i++) {
+            if(a[i] + b[n - 1-i] < k) {
+                return false;
+            }
+        }
+        
+        return true; 
+    }
+}
+
+Step-by-Step Breakdown
+Sort Both Arrays:
+
+Arrays.sort(a);
+Arrays.sort(b);
+This sorts array a in ascending order and array b in ascending order.
+Check Pair Sums:
+
+Loop through each index i from 0 to n - 1.
+For each i, check if the sum of a[i] (smallest remaining in a) and b[n - 1 - i] (largest remaining in b) is at least k.
+If any pair's sum is less than k, return false.
+Return Result:
+
+If all pairs meet the condition, return true.
+Example
+Consider the arrays a = [1, 2, 3] and b = [7, 8, 9] with k = 10.
+
+Sort a: [1, 2, 3]
+Sort b: [7, 8, 9]
+Check pairs:
+Pair a[0] (1) with b[2] (9): 1 + 9 = 10 (OK)
+Pair a[1] (2) with b[1] (8): 2 + 8 = 10 (OK)
+Pair a[2] (3) with b[0] (7): 3 + 7 = 10 (OK)
+All pairs are valid, so return true.
