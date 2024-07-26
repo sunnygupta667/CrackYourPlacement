@@ -1,0 +1,25 @@
+Code:
+class Solution {
+    public int findPair(int n, int x, int[] arr) {
+        // code here
+         HashSet<Integer> nn = new HashSet<>();
+    
+        for(int i=0; i<n; i++){
+          if (nn.contains(arr[i] - x) || nn.contains(arr[i] + x)) 
+            return 1;
+            else nn.add(arr[i]);
+        }
+        return -1;
+    }
+}
+Explanation:
+Create a Set:
+HashSet<Integer> nn = new HashSet<>(); - This set will store the numbers we've seen so far.
+Loop Through the Array:
+For each number in the array:
+Check if there is a number in the set that is either x more or x less than the current number.
+Check for Pairs:
+If we find such a number, return 1 (meaning a pair is found).
+If not, add the current number to the set.
+Return Result:
+If we finish checking all numbers and don't find any pairs, return -1.
