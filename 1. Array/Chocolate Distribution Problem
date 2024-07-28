@@ -1,0 +1,28 @@
+Code:
+class Solution
+{
+    public long findMinDiff (ArrayList<Integer> a, int n, int m)
+    {
+        // your code here
+
+        Collections.sort(a);
+        long min = Integer.MAX_VALUE;
+        for(int i =0;i<=(n-m);i++){
+            min = Math.min(min,a.get(i+m-1) - a.get(i));
+        }
+        
+        return min;
+
+    }
+}
+Explanation:
+Sort the Array:
+Sorting the array helps us to easily find the subarrays with the smallest range (difference between the maximum and minimum).
+Initialize Minimum Difference:
+Initialize a variable min to store the minimum difference. Start with a very large value (Integer.MAX_VALUE).
+Find the Minimum Difference:
+Loop through the array and consider each subarray of size m.
+For each subarray, calculate the difference between the maximum value (last element in the subarray) and the minimum value (first element in the subarray).
+Update min with the smallest difference found.
+Return the Minimum Difference:
+After checking all possible subarrays of size m, return the smallest difference found.
