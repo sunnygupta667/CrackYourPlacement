@@ -1,0 +1,38 @@
+Code:
+class Solution
+{
+    //Function to find the smallest positive number missing from the array.
+    static int missingNumber(int arr[], int size)
+    {
+        // Your code here
+          int i = 0;
+        while(i<arr.length) {
+            int correct = arr[i]-1;
+            if(arr[i] > 0 && arr[i] < arr.length && arr[i] != arr[correct] ) {
+                int temp = arr[correct];
+                arr[correct] = arr[i];
+                arr[i] = temp;
+            }else {
+                i++;
+            }
+        }
+        for(int j =0; j < arr.length; j++) {
+            if(arr[j] != j+1) {
+                return j+1;
+            }
+        }
+        return arr.length+1;
+    }
+}
+Explanation:
+Initialize i: Start with i set to 0. This variable will be used to go through each element of the array.
+Rearrange the Array:
+For each element in the array, try to place it in its correct position if it is a positive number within the array's length.
+The correct position for the number arr[i] is arr[i] - 1.
+Swap the element to its correct position if it is not already there and if it is a valid positive number within the array's length.
+If the element is already in the correct position or is not a valid positive number, move to the next element.
+Find the Missing Number:
+After rearranging the array, loop through the array again.
+Check if each element is in its correct position. The correct position for a number x is at index x - 1.
+If any element is not in its correct position, return the expected number for that position, which is index + 1.
+If all elements are in their correct positions, return array length + 1 as the smallest missing positive number.
