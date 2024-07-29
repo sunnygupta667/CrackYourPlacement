@@ -1,0 +1,53 @@
+Code:
+Code:
+// Java code to implement the above approach
+import java.util.*;
+
+public class Main {
+
+    public static void printDuplicates(String str)
+    {
+        int len = str.length();
+
+        // Sorting the string
+        char[] chars = str.toCharArray();
+        Arrays.sort(chars);
+        String sortedStr = new String(chars);
+
+        // Loop through the sorted string to find duplicates
+        for (int i = 0; i < len; i++) {
+            int count = 1;
+
+            // Counting the occurrences of each character
+            while (i < len - 1
+                   && sortedStr.charAt(i)
+                          == sortedStr.charAt(i + 1)) {
+                count++;
+                i++;
+            }
+
+            // Printing the duplicate character and its
+            // count
+            if (count > 1) {
+                System.out.println(sortedStr.charAt(i)
+                                   + ", count = " + count);
+            }
+        }
+    }
+
+    public static void main(String[] args)
+    {
+        String str = "test string";
+        printDuplicates(str);
+    }
+}
+
+Find the duplicate characters in a string using Sorting
+If we sort the string then all duplicates will come together in the string. Then, traverse the string from starting index to the ending index and check if the neighbor character is same then increment the count by 1.
+
+Steps to implement the above approach:
+
+Sort the given string.
+Loop through the sorted string to find the duplicates.
+If the next character is the same as the current character then we keep on counting the occurrence of that char.
+If the count is greater than one then we print the character and its count.
