@@ -1,0 +1,21 @@
+Code:
+class Solution {
+    public ListNode middleNode(ListNode head) {
+        int length=0;
+        ListNode res=head;
+        while(res!=null){
+            length++;
+            res=res.next;
+        }
+        length/=2;
+        for(int i=0;i<length;i++) head=head.next;
+        return head;
+    }
+}
+Explanation:
+First Traversal:
+The first while loop counts the total number of nodes in the linked list.
+Second Traversal:
+The second loop moves to the middle node by iterating half the length of the list.
+Final Output:
+The node at the middle index is returned as the result.
