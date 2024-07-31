@@ -1,0 +1,33 @@
+Code: 
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        // Declare two pointer slow and fast
+        // Slow Moves 1 step and Fast moves 2 step
+        ListNode slow=head;
+        ListNode fast= head;
+        
+        while (fast.next!=null&& fast!=null){
+            slow=slow.next;
+            fast =fast.next.next;
+            // Check if both pointers are equal
+            // If they are equal then there is a cycle in the linked list
+            
+            if(slow==fast){
+                // Return True if the condition is true
+                return true;
+            }
+        }
+        return false;
+    }
+}
