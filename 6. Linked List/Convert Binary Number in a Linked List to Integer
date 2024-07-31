@@ -1,0 +1,32 @@
+Code: 
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public int getDecimalValue(ListNode head) {
+        // Step 1: Calculate the length of the linked list
+        int length = 0;
+        ListNode current = head;
+        while (current != null) {
+            length++;
+            current = current.next;
+        }
+
+        // Step 2: Convert binary to decimal
+        int result = 0;
+        current = head; // Reset head to the start of the list
+        for (int i = 0; i < length; i++) {
+            result += Math.pow(2, length - i - 1) * current.val;
+            current = current.next;
+        }
+
+        return result;
+    }
+}
