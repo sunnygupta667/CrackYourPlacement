@@ -1,0 +1,28 @@
+Code:
+class Solution {
+    public ListNode deleteDuplicates(ListNode head)
+     {
+       // Check if List is empty or not
+        if (head == null){
+            return head;
+        }
+        // Initialize Two pointers
+        ListNode curr = head.next;
+        ListNode prev= head;
+        while(curr!=null)
+        {
+            // If equal remove the element
+            if (curr.val==prev.val){
+                prev.next=curr.next;
+                curr=curr.next;
+            }
+            else{
+                // If not equal then move both pointers
+                prev=curr;
+                curr=curr.next;
+            }
+
+        }
+        return head;
+    }
+}
