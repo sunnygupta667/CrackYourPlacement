@@ -1,0 +1,22 @@
+class Solution {
+    // Function to multiply two numbers represented by linked lists
+    public long multiplyTwoLists(Node first, Node second) {
+        long num1 = 0, num2 = 0;
+        long mod = 1000000007; // To handle large numbers and prevent overflow
+        
+        // Traverse the first linked list to form the first number
+        while (first != null) {
+            num1 = (num1 * 10 + first.data) % mod;
+            first = first.next;
+        }
+        
+        // Traverse the second linked list to form the second number
+        while (second != null) {
+            num2 = (num2 * 10 + second.data) % mod;
+            second = second.next;
+        }
+        
+        // Return the product of the two numbers modulo mod
+        return (num1 * num2) % mod;
+    }
+}
