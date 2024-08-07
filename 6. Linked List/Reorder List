@@ -1,0 +1,18 @@
+class Solution {
+    public void reorderList(ListNode head) {
+        if (head == null || head.next == null || head.next.next == null) {
+            return;
+        }
+        
+        ListNode lastNode = head;
+        while (lastNode.next != null && lastNode.next.next != null) {
+            lastNode = lastNode.next;
+        }
+        
+        ListNode nextNode = head.next;
+        head.next = lastNode.next;
+        lastNode.next = null;
+        reorderList(nextNode);
+        head.next.next = nextNode;
+    }
+}
