@@ -1,0 +1,18 @@
+class Solution {
+
+    private void invertTreecon(TreeNode root){
+        if(root==null)return;
+       // Post-order Traversal
+       TreeNode temp= root.left;
+       root.left= root.right;
+       root.right=temp;
+
+       // Swap the left and right at current level
+       if(root.left!=null)invertTree(root.left);
+       if(root.right!=null)invertTree(root.right); 
+    }
+    public TreeNode invertTree(TreeNode root) {
+        invertTreecon(root);
+        return root;
+    }
+}
